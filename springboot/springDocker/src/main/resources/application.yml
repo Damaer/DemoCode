@@ -1,0 +1,31 @@
+server:
+  port: 8081
+spring:
+  #数据库连接配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.17.0.3:3306/test?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+  redis:
+    host: 172.17.0.2     ## redis所在的服务器IP
+    port: 6379
+    ##密码，我这里没有设置，所以不填
+    password:
+    ## 设置最大连接数，0为无限
+    pool:
+      max-active: 8
+      min-idle: 0
+      max-idle: 8
+      max-wait: -1
+#mybatis的相关配置
+mybatis:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.aphysia.springdocker.model
+  #开启驼峰命名
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    root: debug
